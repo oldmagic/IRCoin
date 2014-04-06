@@ -1,0 +1,9 @@
+Building IRCoin
+
+See doc/readme-qt.rst for instructions on building IRCoin QT,
+the intended-for-end-users, nice-graphical-interface, reference
+implementation of IRCoin.
+
+See doc/build-*.txt for instructions on building IRCoind,
+the intended-for-services, no-graphical-interface, reference
+implementation of IRCoin.
