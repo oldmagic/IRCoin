@@ -79,6 +79,13 @@ def connect_JSON(config):
         return result
     except:
         sys.stderr.write("Error connecting to RPC server at 127.0.0.1:%s\n" % str(config['rpcport']))
+            redacted_connect = "http://%s:***@127.0.0.1:%s" % (config['rpcuser'], config['rpcport'])
+            sys.stderr.write("RPC server at "+redacted_connect+" testnet setting mismatch\n")
+            sys.exit(1)
+        return result
+    except:
+        redacted_connect = "http://%s:***@127.0.0.1:%s" % (config['rpcuser'], config['rpcport'])
+        sys.stderr.write("Error connecting to RPC server at "+redacted_connect+"\n")
         sys.exit(1)
 
 def unlock_wallet(bitcoind):
