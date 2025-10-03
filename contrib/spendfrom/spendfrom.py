@@ -74,6 +74,11 @@ def connect_JSON(config):
         # ServiceProxy is lazy-connect, so send an RPC command mostly to catch connection errors,
         # but also make sure the bitcoind we're talking to is/isn't testnet:
         if result.getmininginfo()['testnet'] != testnet:
+            sys.stderr.write("RPC server at 127.0.0.1:%s testnet setting mismatch\n" % str(config['rpcport']))
+            sys.exit(1)
+        return result
+    except:
+        sys.stderr.write("Error connecting to RPC server at 127.0.0.1:%s\n" % str(config['rpcport']))
             redacted_connect = "http://%s:***@127.0.0.1:%s" % (config['rpcuser'], config['rpcport'])
             sys.stderr.write("RPC server at "+redacted_connect+" testnet setting mismatch\n")
             sys.exit(1)
